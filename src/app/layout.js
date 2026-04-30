@@ -1,14 +1,13 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+import Banner from "@/components/Banner";
+import Navbar from "@/components/Navbar";
+import { Fade, Slide, Zoom } from "react-awesome-reveal";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const notoSans = Noto_Sans({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-noto-sans",
 });
 
 export const metadata = {
@@ -19,10 +18,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="es"
+      className={`${notoSans.variable} h-full antialiased font-sans`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col relative">
+        <div className="absolute inset-0 -z-10 bg-[url('/pleca.png')] bg-cover bg-no-repeat opacity-30"></div>
+
+        {/* Banner fuera de cualquier animación */}
+        <Banner />
+        <Fade>
+          <main className="flex-grow relative z-10 flex flex-col pt-36">
+            <Navbar />
+            {children}
+          </main>
+        </Fade>
+      </body>
     </html>
   );
 }

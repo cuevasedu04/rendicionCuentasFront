@@ -1,65 +1,88 @@
+'use client'
+
 import Image from "next/image";
+import { Zoom } from "react-awesome-reveal";
+import RotatingText from "@/components/ui/RotatingText";
+import { motion } from "motion/react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    // Regresamos al min-h original de 200px
+    <div className="min-h-[calc(100vh-200px)] flex items-center justify-center w-full relative">
+
+      {/* Contenedor del contenido (Logo, Texto, Botón) */}
+      <div className="relative isolate px-6 lg:px-8 w-full z-10">
+        <div className="mx-auto max-w-3xl py-10">
+
+          <Zoom>
+            <div className="flex justify-center mb-5">
+              <Image
+                src="/anam.png"
+                alt="Logo"
+                width={150}
+                height={150}
+              />
+            </div>
+
+            {/* Contenido central */}
+            <div className="text-center">
+              {/* Mantenemos el badge con RotatingText pero ajustamos escala para que combine con el hero grande */}
+              <div className="flex justify-center mb-6">
+                <motion.div 
+                  layout
+                  transition={{ type: 'spring', damping: 25, stiffness: 120 }}
+                  className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#621f32]/20 bg-[#621f32]/5 text-[#621f32] text-sm sm:text-base font-medium"
+                >
+                  <span className="flex h-2.5 w-2.5 rounded-full bg-[#621f32] animate-pulse"></span>
+                  Plataforma de
+                  <RotatingText
+                    texts={['Rendición de Cuentas', 'Informes de Gestión', 'Actas Entrega-Recepción', 'Transparencia']}
+                    mainClassName="font-bold ml-1"
+                    staggerFrom={"last"}
+                    initial={{ y: "100%", opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: "-120%", opacity: 0 }}
+                    staggerDuration={0.02}
+                    splitLevelClassName="overflow-hidden"
+                    transition={{ type: 'spring', damping: 25, stiffness: 120 }}
+                    rotationInterval={3500}
+                  />
+                </motion.div>
+              </div>
+
+              <h1 className="text-3xl font-semibold text-gray-900 sm:text-6xl">
+                Bienvenida/o al Sistema de Monitoreo de <br className="hidden sm:block" />
+                <span className="text-[#621f32] font-bold">Rendición de Cuentas</span>
+              </h1>
+              <p className="mt-8 text-sm font-medium text-pretty text-gray-600 sm:text-xl/8">
+                En este sistema podrás llevar a cabo un seguimiento y control el estado de entrega de las Actas Entrega-Recepción e Informes de Gestión individual de los servidores públicos de tu unidad administrativa.
+              </p>
+              <div className="mt-8 flex items-center justify-center gap-x-6">
+                <a
+                  href="/login"
+                  className="rounded-md bg-[#621f32] px-4 py-2 text-base font-semibold text-white shadow-sm hover:bg-[#621f32]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#621f32]/60 hover:scale-105 transition-all duration-300"
+                >
+                  Iniciar Sesión
+                </a>
+              </div>
+            </div>
+          </Zoom>
+        </div>
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="absolute top-0 left-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-[calc(100vh/3)]"
+      >
+        <div
+          style={{
+            clipPath:
+              'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+          }}
+          className="relative -top-[10rem] -left-[10rem] aspect-[1155/678] w-[36.125rem] translate-x-0 bg-gradient-to-tr from-[#9089fc] to-[#ff80b5] opacity-30 sm:-top-[15rem] sm:-left-[20rem] sm:w-[72.1875rem]"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
+
     </div>
-  );
+  )
 }
