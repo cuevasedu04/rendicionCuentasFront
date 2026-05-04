@@ -45,22 +45,22 @@ const modules = [
 
 export default function Home() {
   return (
-    <div className="relative min-h-[calc(100dvh-144px)] flex items-center">
+    <div className="relative min-h-[calc(100dvh-112px)] flex items-center">
 
       <div className="fixed inset-0 z-0 pointer-events-none">
         <DotField
-          dotRadius={4}
+          dotRadius={2}
           dotSpacing={21}
           cursorRadius={500}
           cursorForce={0.66}
           bulgeOnly={true}
-          bulgeStrength={68}
-          glowRadius={160}
-          waveAmplitude={9}
+          bulgeStrength={28}
+          glowRadius={80}
+          waveAmplitude={5}
           sparkle={true}
-          gradientFrom="rgba(98, 31, 50, 0.6)"
-          gradientTo="rgba(138, 42, 59, 0.4)"
-          glowColor="#ffffff"
+          gradientFrom="rgba(98, 31, 50, 0.33)"
+          gradientTo="rgba(138, 42, 60, 0.22)"
+          glowColor="#ffffff1b"
         />
       </div>
 

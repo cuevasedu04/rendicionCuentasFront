@@ -3,8 +3,9 @@ import "./globals.css";
 import Banner from "@/components/Banner";
 import Navbar from "@/components/Navbar";
 import PillNavBar from "@/components/PillNavBar";
+import PlecaBackground from "@/components/PlecaBackground";
 import { SessionProvider } from "next-auth/react";
-import { Fade } from "react-awesome-reveal";
+import MainPadding from "@/components/MainPadding";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -24,9 +25,9 @@ export default function RootLayout({ children }) {
       className={`${notoSans.variable} h-full antialiased font-sans`}
     >
       <body className="min-h-full flex flex-col relative">
-        <div className="absolute inset-0 -z-10 bg-[url('/pleca.png')] bg-cover bg-no-repeat opacity-30"></div>
-
         <SessionProvider>
+          <PlecaBackground />
+
           {/* Banner gobierno (fixed top-0 h-20) */}
           <Banner />
 
@@ -36,15 +37,9 @@ export default function RootLayout({ children }) {
           {/* PillNav — solo visible cuando autenticado (fixed top-36) */}
           <PillNavBar />
 
-          <Fade>
-            {/*
-              pt-[210px]: 80px (banner) + 64px (navbar) + 56px (pillnav + gap) + 10px extra
-              Esto evita que el contenido quede debajo de los headers fijos.
-            */}
-            <main className="flex-grow relative z-10 flex flex-col pt-[210px]">
-              {children}
-            </main>
-          </Fade>
+          <MainPadding>
+            {children}
+          </MainPadding>
         </SessionProvider>
       </body>
     </html>

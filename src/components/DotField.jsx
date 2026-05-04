@@ -10,14 +10,14 @@ const DotField = memo(({
   dotSpacing = 14,
   cursorRadius = 200,
   cursorForce = 0.1,
-  bulgeOnly = false,
+  bulgeOnly = true,
   bulgeStrength = 10,
   glowRadius = 160,
   sparkle = false,
   waveAmplitude = 0,
   gradientFrom = 'rgba(169, 85, 247, 0.13)',
   gradientTo = 'rgba(180, 151, 207, 0.09)',
-  glowColor = '#120f1782',
+  glowColor = '#120f1700',
   ...rest
 }) => {
   const canvasRef = useRef(null);

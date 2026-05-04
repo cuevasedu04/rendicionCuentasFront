@@ -139,11 +139,11 @@ export default function ExcepcionesPage() {
         {toast && (
           <motion.div
             key="toast"
-            initial={{ opacity: 0, y: -12, scale: 0.96 }}
+            initial={{ opacity: 0, y: -24, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.96 }}
+            exit={{ opacity: 0, y: -16, scale: 0.96 }}
             transition={spring}
-            className={`fixed top-24 right-6 z-50 flex items-center gap-3 px-5 py-3 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.12)] text-white text-sm font-medium
+            className={`fixed top-6 left-1/2 -translate-x-1/2 z-[200] flex items-center gap-3 px-5 py-3 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.18)] text-white text-sm font-medium whitespace-nowrap
               ${toast.ok ? 'bg-emerald-600' : 'bg-red-600'}`}
           >
             {toast.ok

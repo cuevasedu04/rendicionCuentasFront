@@ -74,23 +74,23 @@ export default function Login() {
       {/* DotField background */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <DotField
-          dotRadius={4}
-          dotSpacing={21}
-          cursorRadius={500}
-          cursorForce={0.66}
-          bulgeOnly={true}
-          bulgeStrength={68}
-          glowRadius={160}
-          waveAmplitude={9}
-          sparkle={true}
-          gradientFrom="rgba(98, 31, 50, 0.6)"
-          gradientTo="rgba(138, 42, 59, 0.4)"
-          glowColor="#ffffff"
-        />
+            dotRadius={2}
+            dotSpacing={21}
+            cursorRadius={500}
+            cursorForce={0.66}
+            bulgeOnly={true}
+            bulgeStrength={28}
+            glowRadius={80}
+            waveAmplitude={5}
+            sparkle={true}
+            gradientFrom="rgba(98, 31, 50, 0.33)"
+            gradientTo="rgba(138, 42, 60, 0.22)"
+            glowColor="#ffffff1b"
+          />
       </div>
 
       {/* Login layout */}
-      <div className="relative z-10 flex min-h-[calc(100dvh-144px)] items-center justify-center px-6 py-12">
+      <div className="relative z-10 flex min-h-[calc(100dvh-112px)] items-center justify-center px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}

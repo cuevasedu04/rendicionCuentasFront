@@ -131,8 +131,9 @@
 }
 
 .pill.is-active {
-  background: var(--base, #621f32);
-  color: var(--hover-text, #fff);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--base, #621f32);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
 }
 
 .pill.is-active::after {
@@ -141,11 +142,12 @@
   bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
-  width: 10px;
-  height: 10px;
-  background: var(--base, #621f32);
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.92);
   border-radius: 50px;
   z-index: 4;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .desktop-only {
